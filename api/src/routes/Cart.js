@@ -1,17 +1,13 @@
 const { Router } = require('express');
 const express = require('express');
 const router = Router();
-const { Cart , Porducts } = require('../db.js');
-const axios = require('axios')
 
 
+const postCart = require('../controllers/postCart');
+const getAllCart = require("../controllers/getAllCart")
 
-router.get("/", async(req, res) => {
-   
-})
-
-
-
+router.get("/", getAllCart)
+router.post("/", postCart)
 
 
 module.exports = router;

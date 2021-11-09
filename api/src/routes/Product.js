@@ -4,9 +4,10 @@ const router = Router();
 const { Cart, Products } = require('../db');
 
 
-router.post("/", async (req, res, next) => {
-   
-})
+const createProduct = require('../controllers/createProduct');
+const getAllProducts = require('../controllers/getAllProducts');
 
+router.get("/", getAllProducts)
+router.post("/", createProduct)
 
 module.exports = router;
