@@ -1,6 +1,9 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-
+import {restaAmount, sumaAmount, removeItemDB} from "../action/actions"
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import CardActions from "@material-ui/core/CardActions";
 
 export default function CheckoutCard({
     name,
@@ -12,11 +15,16 @@ export default function CheckoutCard({
     const dispatch = useDispatch()
 
     const suma = () => {
-       // dispatch(sumaAmount(id))
+        dispatch(sumaAmount(id))
     }
     const resta = () => {
-        /*dispatch(restaAmount(id))*/
+        dispatch(restaAmount(id))
     }
+    const RemoveItem = () => {
+      console.log("IDDDDD", id)
+      dispatch(removeItemDB(id))
+    }
+
     var stock = 20
 
       return(
@@ -45,6 +53,13 @@ export default function CheckoutCard({
       </td>
       <td>
         <p >${price * amount}</p>
+      </td>
+      <td className="table-row__td">
+        <CardActions disableSpacing>
+          <IconButton onClick={(event) => RemoveItem(event, id)}>
+            <DeleteIcon fontSize="large" />
+          </IconButton>
+        </CardActions>
       </td>
          </tr>
       )

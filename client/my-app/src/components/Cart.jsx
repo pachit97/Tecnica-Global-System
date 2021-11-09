@@ -47,7 +47,7 @@ function Cart() {
                           name={e.product.name}
                           price={e.product.price}
                           image={e.product.image}
-                          amount={e.product.amount}
+                          amount={e.quantity}
                           />
                         ))}
                       </tbody>

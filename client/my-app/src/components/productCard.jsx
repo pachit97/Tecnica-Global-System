@@ -13,8 +13,6 @@ const ProductCard = ({ image, name, price, id, amount }) => {
 
 
   const cartOnClick = () => {
-    
-   
     var busco = state?.find((e) => e.id === id);
     if (!busco) {
       dispatch(getAddToCart(id));
