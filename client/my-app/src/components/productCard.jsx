@@ -8,19 +8,18 @@ import { useSelector } from "react-redux";
 
 const ProductCard = ({ image, name, price, id, amount }) => {
   const state = useSelector((state) => state.cart);
-  console.log("carritoooo", state);
+ 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllCart());
-  }, []);
 
   const cartOnClick = () => {
-    var algo = state[0]?.products;
-    console.log("ACAAA", algo);
-    var busco = algo?.find((e) => e.id === id);
+    
+   
+    var busco = state?.find((e) => e.id === id);
     if (!busco) {
       dispatch(getAddToCart(id));
+    }else{
+        dispatch(getAllCart())
     }
   };
   var priceOffer = "$300";
@@ -58,7 +57,7 @@ const ProductCard = ({ image, name, price, id, amount }) => {
               <p class="previous-price">{priceOffer}</p>
               <p class="current-price">{price}</p>
             </div>
-            <i class="fas fa-shopping-cart"></i>
+            <button onClick={cartOnClick} class="fas fa-shopping-cart"></button>
           </div>
         </div>
       </div>

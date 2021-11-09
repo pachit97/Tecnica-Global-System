@@ -7,18 +7,24 @@ import  Product  from "./Products"
 import "./Cart.css"
 import { useSelector } from 'react-redux'
 import "./CheckoutCard.css"
+import { useEffect } from "react";
+import { getAllCart } from "../action/actions";
+import { useDispatch } from "react-redux";
 
 var CarritoReducer = ["hola", "adiooo"]
 
 function Cart() {
     const state = useSelector(state => state.cart)
+    const dispatch = useDispatch()
     
-    var productos = state[0]?.products
-    
-    console.log("productosss", productos, state)
+
+
+    console.log("productosss",  state)
 
       function Carrito(){
+
           return (
+
             <div >
               <div className="row row--top-20">
                 <div className="col-md-12">
@@ -28,20 +34,20 @@ function Cart() {
                         <tr>
                           <th className="table__th">Name</th>
                           <th className="table__th">Price</th>
-                          <th colspan="3" className="table__th">Amount</th>
+                          <th  className="table__th">Amount</th>
                           <th className="table__th">Subtotal</th>
                           <th className="table__th">Delete</th>
                         </tr>
                       </thead>
                       <tbody className="table__tbody">
-                        {productos?.map((e) => (
+                        {state?.map((e) => (
                           <CheckoutCard
-                          key={e.id}
-                          id={e.id}
-                          name={e.name}
-                          price={e.price}
-                          image={e.image}
-                          amount={e.amount}
+                          key={e.product.id}
+                          id={e.product.id}
+                          name={e.product.name}
+                          price={e.product.price}
+                          image={e.product.image}
+                          amount={e.product.amount}
                           />
                         ))}
                       </tbody>

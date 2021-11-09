@@ -5,10 +5,10 @@ import ProductCard from './productCard'
 function Product() {
 
     const state = useSelector(state => state.products)
-    console.log("aca", state)
+   
     
     return (
-            <div>
+            <div className="productos">
                 { state?.map((e) => (
                     <ProductCard key={e.id}
                         id={e.id}

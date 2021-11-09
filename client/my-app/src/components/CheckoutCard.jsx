@@ -43,6 +43,9 @@ export default function CheckoutCard({
           ><h1 className="toCartBoton menos">+</h1></div>
         </div>
       </td>
+      <td>
+        <p >${price * amount}</p>
+      </td>
          </tr>
       )
   }
