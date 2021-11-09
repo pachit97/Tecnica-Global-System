@@ -1,3 +1,4 @@
+
 const {Cart, Product} = require('../db');
 
 const postCart = async (req, res, next) => {
@@ -5,19 +6,35 @@ const postCart = async (req, res, next) => {
     const {id} = req.body;
     console.log("IDDD", id)
     try {      
-        const [cart, wasCreated] = await Cart.findOrCreate({
-            where: { 
-              id: 1
-            }
-          })
-       
     if(id){
-     const traigo = await Product.findOne({where: id})
-     await cart.addProduct(traigo)
-     const carrito = await Cart.findOne({where: {id:1},include: [
-      {model: Product}
-    ],})
-     res.json(carrito)
+      const existe = await Cart.findOne({where:{Cart_product: id}})
+        if(existe){
+            const traigoCarrito = await Cart.findAll({
+                include: [
+                    { model: Product }
+                  ],
+                  order: [
+                    ['id', 'ASC']
+                ]
+            })
+           return res.json(traigoCarrito)
+        }else{
+          await Cart.create({
+            Cart_product: id,
+            include: [
+             {model: Product}
+           ]
+        })
+        const traigoCarrito2 = await Cart.findAll({
+          include: [
+              { model: Product }
+            ],
+            order: [
+              ['id', 'ASC']
+          ]
+      })
+     return res.json(traigoCarrito2)
+      }
     }
     } catch (error) {
         next(error);     
