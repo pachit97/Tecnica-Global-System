@@ -27,7 +27,7 @@ function Cart() {
 
           return (
 
-            <div >
+            <div className="todo">
               <div className="row row--top-20">
                 <div className="col-md-12">
                   <div className="table-container">
@@ -55,8 +55,13 @@ function Cart() {
                       </tbody>
                     </table>
                   </div>
-                  <div>{total}</div>
-                  <button>Pay</button>
+                  {state.length ? <div>
+                      <div className="amount">Total Amount ${total}</div>
+                      <img className="imagen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Former_Visa_%28company%29_logo.svg/288px-Former_Visa_%28company%29_logo.svg.png"></img>
+                      <img className="imagen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png"></img>
+                      <img className="imagen" src="https://play-lh.googleusercontent.com/MMBG4AZmpMhSfhF5k7QnFmhvFbaF5ZC_BtEOIKRt9TIkUZjul2lWwPZV75PwTfoSm23-jgMxkroRGA-vkDg"></img>
+                      <button className="pagar">Pay</button>
+                  </div> : null}
                 </div>
               </div>
             </div>

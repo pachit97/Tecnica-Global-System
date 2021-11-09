@@ -296,4 +296,33 @@ GENERAL
     width: 100%;
   }
 }
-
+.amount{
+  color: #53646f;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 0px;
+}
+.pagar {
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  margin-left: 80px;
+  justify-content: center;
+  margin-top: 10px;
+  width: 200px;
+  height: 30px;
+}
+.imagen {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 70px;
+}
+.todo {
+  padding-right: 100px;
+  height: 200px;
+  width: 650px;
+}

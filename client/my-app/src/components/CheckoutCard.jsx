@@ -18,7 +18,7 @@ export default function CheckoutCard({
         dispatch(sumaAmount(id))
     }
     const resta = () => {
-        dispatch(restaAmount(id))
+        return (amount >= 2) ? dispatch(restaAmount(id)) : null
     }
     const RemoveItem = () => {
       console.log("IDDDDD", id)
@@ -41,7 +41,9 @@ export default function CheckoutCard({
             onClick={resta}
           >
             {" "}
-            <h1 className="toCartBoton menos">-</h1>
+            <h1 className={`toCartBoton menos ${
+              amount === 1 ? "disabled" : ""
+            }`}>-</h1>
           </div>
           <div className="">{amount}</div>
           <div
