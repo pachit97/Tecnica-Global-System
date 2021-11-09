@@ -4,7 +4,6 @@ const {Cart, Product} = require('../db');
 const postCart = async (req, res, next) => {
     
     const {id} = req.body;
-    console.log("IDDD", id)
     try {      
     if(id){
       const existe = await Cart.findOne({where:{Cart_product: id}})

@@ -2,7 +2,6 @@ const {Product, Cart} = require('../db');
 
 const removeItem = async (req, res, next) => {
     const {id} = req.params   
-    console.log("VOSA SOS INVALIDO PA", id)
     try{
         await Cart.destroy({where: {Cart_product: id}});
         var traigoTodos = await Cart.findAll({
