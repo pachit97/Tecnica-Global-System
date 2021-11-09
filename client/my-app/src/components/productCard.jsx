@@ -8,16 +8,15 @@ import { useSelector } from "react-redux";
 
 const ProductCard = ({ image, name, price, id, amount }) => {
   const state = useSelector((state) => state.cart);
- 
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
 
   const cartOnClick = () => {
     var busco = state?.find((e) => e.id === id);
     if (!busco) {
       dispatch(getAddToCart(id));
-    }else{
-        dispatch(getAllCart())
+    } else {
+      dispatch(getAllCart());
     }
   };
   var priceOffer = "$300";
@@ -42,18 +41,13 @@ const ProductCard = ({ image, name, price, id, amount }) => {
         </div>
 
         <div class="gow-img-div img-div">
-          <img
-            src={image}
-            alt="god-of-war-figurine"
-          />
+          <img src={image} alt="god-of-war-figurine" />
         </div>
         <div class="text-container">
           <h2 class="item-name">{name}</h2>
-          <p class="date">{amount}</p>
           <div class="pricing-and-cart">
             <div class="pricing">
-              <p class="previous-price">{priceOffer}</p>
-              <p class="current-price">{price}</p>
+              <p class="current-price">${price}</p>
             </div>
             <button onClick={cartOnClick} class="fas fa-shopping-cart"></button>
           </div>
