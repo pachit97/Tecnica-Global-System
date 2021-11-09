@@ -1,11 +1,10 @@
 const {Product, Cart} = require('../db');
 
-const sumaCantidad = async (req, res, next) => {
-    const {id} = req.body
+const removeItem = async (req, res, next) => {
+    const {id} = req.params   
+    console.log("VOSA SOS INVALIDO PA", id)
     try{
-        const busco = await Cart.findOne({where: {Cart_product: id}})
-        const guardo = busco.quantity + 1
-        await Cart.update({quantity: guardo},{where: {Cart_product: id}});
+        await Cart.destroy({where: {Cart_product: id}});
         var traigoTodos = await Cart.findAll({
             include: [
                 {model: Product }
@@ -21,4 +20,4 @@ const sumaCantidad = async (req, res, next) => {
     }
 }
  
-module.exports = sumaCantidad;
+module.exports = removeItem;

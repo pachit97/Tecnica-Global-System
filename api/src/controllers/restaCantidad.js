@@ -1,24 +1,27 @@
 
-const {Product} = require('../db');
+const {Product, Cart} = require('../db');
 
 const restaCantidad = async (req, res, next) => {
-    
-    const {id} = req.body;
-    console.log("IDDD", id)
-    try {      
-        const [cart] = await Cart.Create()
-       
-    if(id){
-     const traigo = await Product.findOne({where: id})
-     await cart.addProduct(traigo)
-     const carrito = await Cart.findAll({include: [
-      {model: Product}
-    ],})
-     res.json(carrito)
+    const {id} = req.body
+    var cantidad = -1
+    try{
+        const busco = await Cart.findOne({where: {Cart_product: id}})
+        const guardo = busco.quantity - 1
+        console.log("BUSCOOO", busco)
+        await Cart.update({quantity: guardo},{where: {Cart_product: id}});
+        var traigoTodos = await Cart.findAll({
+            include: [
+                {model: Product }
+              ],
+              order: [
+                ['id', 'ASC']
+            ]
+        })
+		res.json(traigoTodos);
     }
-    } catch (error) {
-        next(error);     
+    catch(err){
+        next(err);
     }
 }
  
-module.exports = postCart;
+module.exports = restaCantidad;

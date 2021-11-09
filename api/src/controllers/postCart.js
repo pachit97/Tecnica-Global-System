@@ -21,6 +21,7 @@ const postCart = async (req, res, next) => {
         }else{
           await Cart.create({
             Cart_product: id,
+            quantity:1,
             include: [
              {model: Product}
            ]
