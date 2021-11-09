@@ -26,6 +26,7 @@ export default function CheckoutCard({
     }
 
     var stock = 20
+    
 
       return(
          <tr>

@@ -15,7 +15,7 @@ export function reducer(state = initialState, action){
                 productsCopy: action.payload
             }
         case GET_CART:
-            console.log("PEILODD0", action.payload)
+            console.log("PEILODD0", state.cart)
             return {
                 ...state,
                 cart: action.payload

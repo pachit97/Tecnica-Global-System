@@ -17,7 +17,9 @@ function Cart() {
     const state = useSelector(state => state.cart)
     const dispatch = useDispatch()
     
-
+    var total = 0;
+    state?.map(e => ((total) += (e.product.price * e.quantity)))
+    
 
     console.log("productosss",  state)
 
@@ -53,13 +55,14 @@ function Cart() {
                       </tbody>
                     </table>
                   </div>
+                  <div>{total}</div>
+                  <button>Pay</button>
                 </div>
               </div>
             </div>
           )
       }
       return (
-          
         <div className="totalView">
           <Carrito/>
           <Product/>
